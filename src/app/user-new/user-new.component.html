@@ -1,0 +1,19 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<nb-card>
+  <nb-card-header>New User</nb-card-header>
+  <nb-card-body>
+    <app-user-form
+      [user]="user"
+      [addPhone]="addPhone"
+      [remPhone]="remPhone"
+      [addEmail]="addEmail"
+      [remEmail]="remEmail"
+      [showPass]="true"
+    ></app-user-form>
+    <button nbButton status="primary" (click)="saveUser()">
+      Save
+      <nb-icon icon="save-outline"></nb-icon>
+    </button>
+  </nb-card-body>
+</nb-card>

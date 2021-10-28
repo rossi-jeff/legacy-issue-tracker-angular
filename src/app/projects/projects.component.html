@@ -1,0 +1,9 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<app-project-filter></app-project-filter>
+
+<app-project-card
+  class="project-card"
+  *ngFor="let project of projects"
+  [project]="project"
+></app-project-card>

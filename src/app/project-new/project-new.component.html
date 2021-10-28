@@ -1,0 +1,18 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<nb-card>
+  <nb-card-header>New Project</nb-card-header>
+  <nb-card-body>
+    <app-project-form [project]="project"></app-project-form>
+    <button nbButton *ngIf="signedIn" (click)="saveProject()" status="primary">
+      Save
+      <nb-icon icon="save-outline"></nb-icon>
+    </button>
+    <nb-alert status="warning" *ngIf="!signedIn">
+      <div style="display: flex; gap: 1em">
+        <nb-icon icon="alert-triangle-outline"></nb-icon>
+        <span>You must be signed in to add a new project</span>
+      </div>
+    </nb-alert>
+  </nb-card-body>
+</nb-card>

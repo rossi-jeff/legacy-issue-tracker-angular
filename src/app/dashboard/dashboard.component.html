@@ -1,0 +1,11 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<app-dashboard-filter
+  [loadIssues]="loadIssues"
+  [enabled]="session.signedIn()"
+></app-dashboard-filter>
+
+<app-dashboard-grid
+  [issues]="issues"
+  [enabled]="session.signedIn()"
+></app-dashboard-grid>

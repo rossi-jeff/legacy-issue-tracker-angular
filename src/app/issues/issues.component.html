@@ -1,0 +1,21 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<app-issue-filter [loadIssues]="loadIssues"></app-issue-filter>
+
+<app-pagination
+  [pages]="pages"
+  [currentPage]="currentPage"
+  [setPage]="setPage"
+></app-pagination>
+
+<app-issue-card
+  class="issue"
+  *ngFor="let issue of paged"
+  [issue]="issue"
+></app-issue-card>
+
+<app-pagination
+  [pages]="pages"
+  [currentPage]="currentPage"
+  [setPage]="setPage"
+></app-pagination>

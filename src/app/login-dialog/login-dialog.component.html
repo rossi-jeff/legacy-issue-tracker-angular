@@ -1,0 +1,37 @@
+<nb-card class="opaque" status="primary">
+  <nb-card-header>Sign In</nb-card-header>
+  <nb-card-body>
+    <div class="padded">
+      <label for="Username">Username</label>
+      <input
+        type="text"
+        name="Username"
+        nbInput
+        fullWidth
+        [(ngModel)]="payload.Username"
+      />
+    </div>
+
+    <div class="padded">
+      <label for="Password">Password</label>
+      <input
+        type="password"
+        name="Password"
+        nbInput
+        fullWidth
+        [(ngModel)]="payload.Password"
+      />
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton (click)="close()">
+      <nb-icon icon="close-circle-outline"></nb-icon>
+      Close
+    </button>
+    <button nbButton class="right" (click)="signIn()" status="primary">
+      Sign In
+      <nb-icon icon="log-in-outline"></nb-icon>
+    </button>
+    <div class="clear"></div>
+  </nb-card-footer>
+</nb-card>

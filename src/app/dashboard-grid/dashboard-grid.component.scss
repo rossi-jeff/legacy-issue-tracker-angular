@@ -1,0 +1,12 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+app-dashboard-column {
+  flex: 1;
+  min-width: 20em;
+  max-width: 100%;
+}

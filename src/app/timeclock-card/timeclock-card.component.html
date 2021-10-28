@@ -1,0 +1,42 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="column">
+        <strong>User</strong>
+        {{ fullName }}
+      </div>
+      <div class="column">
+        <strong>Project</strong>
+        <span *ngIf="timeclock.Project">{{ timeclock.Project.Name }}</span>
+      </div>
+      <div class="column">
+        <strong>Issue</strong>
+        <span *ngIf="timeclock.Issue">{{
+          timeclock.Issue.SequenceNumber
+        }}</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <strong>Start Date</strong>
+        {{ timeclock.Start.Date }}
+      </div>
+      <div class="column">
+        <strong>Start Time</strong>
+        {{ timeclock.Start.Time }}
+      </div>
+      <div class="column">
+        <strong>End Date</strong>
+        {{ timeclock.End.Date }}
+      </div>
+      <div class="column">
+        <strong>End Time</strong>
+        {{ timeclock.End.Time }}
+      </div>
+    </div>
+    <button nbButton [routerLink]="[timeclock.UUID]">
+      <nb-icon icon="maximize-outline"></nb-icon>
+      Details
+    </button>
+  </nb-card-body>
+</nb-card>

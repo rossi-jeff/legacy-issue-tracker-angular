@@ -1,0 +1,23 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<nb-card>
+  <nb-card-header>Edit Project</nb-card-header>
+  <nb-card-body>
+    <app-project-form [project]="project"></app-project-form>
+    <button
+      nbButton
+      *ngIf="signedIn"
+      (click)="updateProject()"
+      status="primary"
+    >
+      Update
+      <nb-icon icon="save-outline"></nb-icon>
+    </button>
+    <nb-alert status="warning" *ngIf="!signedIn">
+      <div style="display: flex; gap: 1em">
+        <nb-icon icon="alert-triangle-outline"></nb-icon>
+        <span>You must be signed in to update a project</span>
+      </div>
+    </nb-alert>
+  </nb-card-body>
+</nb-card>

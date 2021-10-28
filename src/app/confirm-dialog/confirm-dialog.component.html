@@ -1,0 +1,15 @@
+<nb-card status="primary">
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>{{ message }}</nb-card-body>
+  <nb-card-footer>
+    <button nbButton (click)="close()" style="margin-right: 1em">
+      <nb-icon icon="close-circle-outline"></nb-icon>
+      Cancel
+    </button>
+    <button nbButton class="right" (click)="confirm()" status="primary">
+      Confirm
+      <nb-icon icon="checkmark-outline"></nb-icon>
+    </button>
+    <div class="clear"></div>
+  </nb-card-footer>
+</nb-card>

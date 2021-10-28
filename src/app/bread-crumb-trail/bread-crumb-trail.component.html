@@ -1,0 +1,16 @@
+<div class="trail" *ngIf="crumbs.length">
+  <div *ngFor="let crumb of crumbs; index as i">
+    <div class="spacer" *ngIf="i !== 0">
+      <nb-icon icon="chevron-right-outline"></nb-icon>
+    </div>
+    <button
+      nbButton
+      [routerLink]="crumb.href"
+      class="crumb"
+      [disabled]="i === crumbs.length - 1"
+    >
+      <nb-icon [icon]="icons[crumb.text]" *ngIf="icons[crumb.text]"></nb-icon>
+      {{ crumb.text }}
+    </button>
+  </div>
+</div>

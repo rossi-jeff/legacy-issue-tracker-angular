@@ -1,0 +1,10 @@
+<nb-card status="primary" [id]="id">
+  <nb-card-header>{{ status }}</nb-card-header>
+  <nb-card-body>
+    <app-dashboard-issue
+      *ngFor="let issue of issues"
+      [issue]="issue"
+      [issueLoaded]="issueLoaded"
+    ></app-dashboard-issue>
+  </nb-card-body>
+</nb-card>

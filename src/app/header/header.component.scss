@@ -1,0 +1,20 @@
+@import "../../themes.scss";
+
+.nav {
+  width: 100%;
+}
+
+nb-icon {
+  color: nb-theme(color-basic-100);
+}
+strong {
+  color: nb-theme(color-basic-100);
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: right;
+}

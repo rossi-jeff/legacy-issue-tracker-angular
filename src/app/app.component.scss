@@ -1,0 +1,14 @@
+@import "../themes.scss";
+
+nb-layout-header {
+  background-color: nb-theme(color-primary-600);
+}
+
+nb-layout-header app-header,
+nb-layout-footer app-footer {
+  width: 100%;
+}
+
+nb-sidebar {
+  background-color: nb-theme(color-basic-500);
+}

@@ -1,0 +1,28 @@
+<div class="nav">
+  <button nbButton ghost (click)="togglePanelCB()" title="Open Menu">
+    <nb-icon icon="menu-outline"></nb-icon>
+  </button>
+  <strong style="margin-left: 1em">Issue Tracker</strong>
+
+  <button
+    nbButton
+    ghost
+    class="right"
+    title="Sign In"
+    *ngIf="!signedIn"
+    (click)="openLogin()"
+  >
+    <nb-icon icon="log-in-outline"></nb-icon>
+  </button>
+  <button
+    nbButton
+    ghost
+    class="right"
+    title="Sign Out"
+    *ngIf="signedIn"
+    (click)="openLogout()"
+  >
+    <nb-icon icon="log-out-outline"></nb-icon>
+  </button>
+  <div class="clear"></div>
+</div>

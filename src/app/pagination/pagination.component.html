@@ -1,0 +1,10 @@
+<nb-button-group>
+  <button
+    nbButton
+    *ngFor="let page of pages"
+    (click)="setPage(page)"
+    [disabled]="page === currentPage"
+  >
+    {{ page }}
+  </button>
+</nb-button-group>

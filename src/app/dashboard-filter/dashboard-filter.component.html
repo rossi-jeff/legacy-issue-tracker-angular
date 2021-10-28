@@ -1,0 +1,108 @@
+<nb-card>
+  <nb-card-body>
+    <button nbButton (click)="showFilter = !showFilter">
+      Filter
+      <nb-icon icon="funnel-outline"></nb-icon>
+    </button>
+    <div id="filter" *ngIf="showFilter">
+      <div class="row">
+        <div class="column">
+          <label for="Priority">Priority</label>
+          <nb-select
+            name="Priority"
+            [(ngModel)]="filter.Priority"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of opts.PriorityArray" [value]="opt">{{
+              opt
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column">
+          <label for="Status">Status</label>
+          <nb-select
+            name="Status"
+            [(ngModel)]="filter.Status"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of opts.StatusArray" [value]="opt">{{
+              opt
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column">
+          <label for="Type">Type</label>
+          <nb-select
+            name="Type"
+            [(ngModel)]="filter.Type"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of opts.IssueTypeArray" [value]="opt">{{
+              opt
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column">
+          <label for="Complexity">Complexity</label>
+          <nb-select
+            name="Complexity"
+            [(ngModel)]="filter.Complexity"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of opts.ComplexityArray" [value]="opt">{{
+              opt
+            }}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="ProjectId">Project</label>
+          <nb-select
+            name="ProjectId"
+            fullWidth
+            [(ngModel)]="filter.ProjectId"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of projectOptions" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column">
+          <label for="AuthorId">Author</label>
+          <nb-select
+            name="AuthorId"
+            [(ngModel)]="filter.AuthorId"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of userOptions" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column">
+          <label for="AssignedToId">Assigned</label>
+          <nb-select
+            name="AssignedToId"
+            [(ngModel)]="filter.AssignedToId"
+            (selectedChange)="filterIssues()"
+          >
+            <nb-option *ngFor="let opt of userOptions" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column-bottom">
+          <button nbButton (click)="clearFilters()">Clear</button>
+        </div>
+      </div>
+    </div>
+    <nb-alert status="warning" *ngIf="!enabled" style="margin-top: 1em">
+      <div style="display: flex; gap: 1em">
+        <nb-icon icon="alert-triangle-outline"></nb-icon>
+        <span>You must be signed in to move issues on the dashboard</span>
+      </div>
+    </nb-alert>
+  </nb-card-body>
+</nb-card>

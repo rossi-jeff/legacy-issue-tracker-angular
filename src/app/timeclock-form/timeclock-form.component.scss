@@ -1,0 +1,15 @@
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.column {
+  margin: 0 1em 1em 0;
+  flex: 1;
+}

@@ -1,0 +1,21 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<app-timeclock-filter [loadTimeClocks]="loadTimeClocks"></app-timeclock-filter>
+
+<app-pagination
+  [pages]="pages"
+  [currentPage]="currentPage"
+  [setPage]="setPage"
+></app-pagination>
+
+<app-timeclock-card
+  class="timeclock"
+  *ngFor="let timeclock of paged"
+  [timeclock]="timeclock"
+></app-timeclock-card>
+
+<app-pagination
+  [pages]="pages"
+  [currentPage]="currentPage"
+  [setPage]="setPage"
+></app-pagination>

@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-card-header>{{ project.Name }}</nb-card-header>
+  <nb-card-body>
+    <p>{{ project.Details }}</p>
+    <button nbButton [routerLink]="[project.UUID]">
+      <nb-icon icon="maximize-outline"></nb-icon>
+      Details
+    </button>
+  </nb-card-body>
+</nb-card>

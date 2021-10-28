@@ -1,0 +1,54 @@
+<form id="project-form" onsubmit="return false">
+  <div style="margin-bottom: 1.5em">
+    <label for="Name">Name</label>
+    <input
+      type="text"
+      id="Name"
+      name="Name"
+      nbInput
+      fullWidth
+      [(ngModel)]="project.Name"
+      required
+      minlength="4"
+      #Name="ngModel"
+      [status]="
+        Name.invalid && (Name.dirty || Name.touched) ? 'danger' : 'primary'
+      "
+    />
+    <div *ngIf="Name.invalid && (Name.dirty || Name.touched)">
+      <div *ngIf="Name.errors?.required">
+        Name is required.
+      </div>
+      <div *ngIf="Name.errors?.minlength">
+        Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom: 1.5em">
+    <label for="Details">Details</label>
+    <textarea
+      name="Details"
+      id="Details"
+      nbInput
+      fullWidth
+      [(ngModel)]="project.Details"
+      required
+      minlength="4"
+      #Details="ngModel"
+      [status]="
+        Details.invalid && (Details.dirty || Details.touched)
+          ? 'danger'
+          : 'primary'
+      "
+    ></textarea>
+    <div *ngIf="Details.invalid && (Details.dirty || Details.touched)">
+      <div *ngIf="Details.errors?.required">
+        Details is required.
+      </div>
+      <div *ngIf="Details.errors?.minlength">
+        Details must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,7 @@
+{
+  "root": "dist/issue-tracker-angular",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  }
+}

@@ -1,0 +1,14 @@
+.trail {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.spacer {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.crumb,
+.spacer {
+  margin: 0 1em 1em 0;
+}

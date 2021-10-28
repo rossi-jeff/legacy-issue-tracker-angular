@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-card-header>{{ user.Credentials.Username }}</nb-card-header>
+  <nb-card-body>
+    <p>{{ fullName }}</p>
+    <button nbButton [routerLink]="[user.UUID]">
+      <nb-icon icon="maximize-outline"></nb-icon>
+      Details
+    </button>
+  </nb-card-body>
+</nb-card>

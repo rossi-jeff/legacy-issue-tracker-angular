@@ -1,0 +1,23 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<nb-card>
+  <nb-card-header>Edit Time Clock</nb-card-header>
+  <nb-card-body>
+    <app-timeclock-form [timeclock]="timeclock"></app-timeclock-form>
+    <button
+      nbButton
+      *ngIf="signedIn"
+      status="primary"
+      (click)="updateTimeClock()"
+    >
+      Update
+      <nb-icon icon="save-outline"></nb-icon>
+    </button>
+    <nb-alert status="warning" *ngIf="!signedIn">
+      <div style="display: flex; gap: 1em">
+        <nb-icon icon="alert-triangle-outline"></nb-icon>
+        <span>You must be signed in to update a time clock</span>
+      </div>
+    </nb-alert>
+  </nb-card-body>
+</nb-card>

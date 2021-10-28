@@ -1,0 +1,42 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<h4 style="margin-bottom: 1em">Welcome to Issue Tracker</h4>
+
+<div style="margin-bottom: 1em">
+  This site is a functional example of an issue tracking application. All of the
+  existing data has been generated randomly. It is not intended to be used as a
+  replacement for current leaders in the field such as Jira. The goal of the
+  site is simply a proof of concept for an issue tracking application.
+</div>
+
+<div style="margin-bottom: 1em">
+  Construction of the site used the component based framework Angular, along
+  with UI framework Nebular. The benefit of using a component based framework is
+  that it becomes easier to follow the DRY ( don't repeat yourself ) principle.
+  In addition, effort was made not to reinvent the wheel. In so doing, the open
+  source packages listed below were utilized.
+</div>
+
+<div style="margin-bottom: 1em">
+  This site is one of four front end applications using the frameworks Vue,
+  React, Angular, and Svelte Kit respectively
+</div>
+
+<nb-tabset>
+  <nb-tab
+    *ngFor="let resource of resources"
+    [tabTitle]="resource.Name"
+    [tabId]="resource.Id"
+    [active]="resource.Id === activeTab"
+  >
+    <div style="margin-bottom: 1em">
+      {{ resource.Details }}
+    </div>
+    <div style="float: right">
+      <a [href]="resource.Url" target="_blank" nbButton
+        >Visit {{ resource.Name }}</a
+      >
+    </div>
+    <div style="clear: right"></div>
+  </nb-tab>
+</nb-tabset>

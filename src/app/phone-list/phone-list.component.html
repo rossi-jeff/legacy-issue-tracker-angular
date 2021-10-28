@@ -1,0 +1,77 @@
+<div id="new-phone">
+  <form id="phone-form" onsubmit="return false">
+    <div class="row">
+      <div>
+        <label for="Number">Number</label>
+        <input
+          type="tel"
+          name="Number"
+          required
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          nbInput
+          [(ngModel)]="phone.Number"
+          #Number="ngModel"
+          [status]="
+            Number.invalid && (Number.dirty || Number.touched)
+              ? 'danger'
+              : 'primary'
+          "
+        />
+        <div *ngIf="Number.invalid && (Number.dirty || Number.touched)">
+          <div *ngIf="Number.errors?.required">
+            Number is required.
+          </div>
+          <div *ngIf="Number.errors?.pattern">
+            Number is not valid<br />format ###-###-###
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="Usage">Usage</label>
+        <nb-select name="Usage" [(ngModel)]="phone.Usage">
+          <nb-option *ngFor="let opt of usageArray" [value]="opt">{{
+            opt
+          }}</nb-option>
+        </nb-select>
+      </div>
+      <div>
+        <label for="Type">Type</label>
+        <nb-select name="Type" [(ngModel)]="phone.Type">
+          <nb-option *ngFor="let opt of phoneTypeArray" [value]="opt">{{
+            opt
+          }}</nb-option>
+        </nb-select>
+      </div>
+      <div class="column-bottom">
+        <nb-toggle labelPosition="end" [(checked)]="phone.Public"
+          >Public</nb-toggle
+        >
+      </div>
+      <div class="column-bottom">
+        <button nbButton (click)="savePhone()">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="phone-list">
+  <div class="row-justify" *ngFor="let phone of phones">
+    <div class="column-button">
+      <button nbButton (click)="editPhone(phone.UUID)">Edit</button>
+    </div>
+    <div class="column">
+      {{ phone.Number }}
+    </div>
+    <div class="column">
+      {{ phone.Usage }}
+    </div>
+    <div class="column">
+      {{ phone.Type }}
+    </div>
+    <div class="column">
+      {{ phone.Public ? "Yes" : "No" }}
+    </div>
+    <div class="column-button">
+      <button nbButton (click)="remPhone(phone.UUID)">Delete</button>
+    </div>
+  </div>
+</div>

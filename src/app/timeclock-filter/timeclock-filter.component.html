@@ -1,0 +1,81 @@
+<nb-card>
+  <nb-card-header>Time Clocks</nb-card-header>
+  <nb-card-body>
+    <button nbButton routerLink="/timeclocks/new">
+      <nb-icon icon="plus-circle-outline"></nb-icon>
+      New
+    </button>
+    <button nbButton (click)="showFilter = !showFilter">
+      Filter
+      <nb-icon icon="funnel-outline"></nb-icon>
+    </button>
+    <div id="filter" *ngIf="showFilter">
+      <div class="row">
+        <div class="column-flex">
+          <label for="UserId">User</label>
+          <nb-select
+            name="UserId"
+            fullWidth
+            [(ngModel)]="filter.UserId"
+            (selectedChange)="filterTimeClocks()"
+          >
+            <nb-option *ngFor="let opt of opts.users" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column-flex">
+          <label for="ProjectId">Project</label>
+          <nb-select
+            name="ProjectId"
+            fullWidth
+            [(ngModel)]="filter.ProjectId"
+            (selectedChange)="filterTimeClocks()"
+          >
+            <nb-option *ngFor="let opt of opts.projects" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+        <div class="column-flex">
+          <label for="IssueId">Issue</label>
+          <nb-select
+            name="IssueId"
+            fullWidth
+            [(ngModel)]="filter.IssueId"
+            (selectedChange)="filterTimeClocks()"
+          >
+            <nb-option *ngFor="let opt of opts.issues" [value]="opt.value">{{
+              opt.text
+            }}</nb-option>
+          </nb-select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="StartDate">Start Date</label>
+          <input
+            type="date"
+            name="StartDate"
+            nbInput
+            [(ngModel)]="filter.StartDate"
+            (change)="filterTimeClocks()"
+          />
+        </div>
+        <div class="column">
+          <label for="EndDate">End Date</label>
+          <input
+            type="date"
+            name="EndDate"
+            nbInput
+            [(ngModel)]="filter.EndDate"
+            (change)="filterTimeClocks()"
+          />
+        </div>
+        <div class="column-bottom">
+          <button nbButton (click)="clearFilters()">Clear</button>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

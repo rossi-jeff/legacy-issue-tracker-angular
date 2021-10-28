@@ -1,0 +1,10 @@
+nb-card.over,
+nb-card.over nb-card-body {
+  background-color: yellow;
+}
+
+nb-card-body {
+  min-height: 350px;
+  max-height: 350px;
+  overflow-y: auto;
+}

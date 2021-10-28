@@ -1,0 +1,67 @@
+<div id="new-email">
+  <form id="email-form" onsubmit="return false">
+    <div class="row">
+      <div>
+        <label for="Address">Address</label>
+        <input
+          type="email"
+          name="Address"
+          nbInput
+          [(ngModel)]="email.Address"
+          #Address="ngModel"
+          required
+          pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"
+          style="width: 20em"
+          [status]="
+            Address.invalid && (Address.dirty || Address.touched)
+              ? 'danger'
+              : 'primary'
+          "
+        />
+        <div *ngIf="Address.invalid && (Address.dirty || Address.touched)">
+          <div *ngIf="Address.errors?.required">
+            Address is required.
+          </div>
+          <div *ngIf="Address.errors?.pattern">
+            Address must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="Usage">Usage</label>
+        <nb-select name="Usage" [(ngModel)]="email.Usage">
+          <nb-option *ngFor="let opt of usageArray" [value]="opt">{{
+            opt
+          }}</nb-option>
+        </nb-select>
+      </div>
+      <div class="column-bottom">
+        <nb-toggle labelPosition="end" [(checked)]="email.Public"
+          >Public</nb-toggle
+        >
+      </div>
+      <div class="column-bottom">
+        <button nbButton (click)="saveEmail()">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div id="email-list">
+  <div class="row-justify" *ngFor="let email of emails">
+    <div class="column-button">
+      <button nbButton (click)="editEmail(email.UUID)">Edit</button>
+    </div>
+    <div class="column">
+      {{ email.Address }}
+    </div>
+    <div class="column">
+      {{ email.Usage }}
+    </div>
+    <div class="column">
+      {{ email.Public ? "Yes" : "No" }}
+    </div>
+    <div class="column-button">
+      <button nbButton (click)="remEmail(email.UUID)">Delete</button>
+    </div>
+  </div>
+</div>

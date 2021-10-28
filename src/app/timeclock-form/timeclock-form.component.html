@@ -1,0 +1,89 @@
+<form id="time-clock-form" onsubmit="return false">
+  <div class="row">
+    <div class="column">
+      <label for="UserId">User</label>
+      <nb-select name="UserId" [(ngModel)]="timeclock.UserId">
+        <nb-option *ngFor="let opt of opts.users" [value]="opt.value">{{
+          opt.text
+        }}</nb-option>
+      </nb-select>
+    </div>
+    <div class="column">
+      <label for="ProjectId">Project</label>
+      <nb-select name="ProjectId" [(ngModel)]="timeclock.ProjectId">
+        <nb-option *ngFor="let opt of opts.projects" [value]="opt.value">{{
+          opt.text
+        }}</nb-option>
+      </nb-select>
+    </div>
+    <div class="column">
+      <label for="IssueId">Issue</label>
+      <nb-select name="IssueId" fullWidth [(ngModel)]="timeclock.IssueId">
+        <nb-option *ngFor="let opt of opts.issues" [value]="opt.value">{{
+          opt.text
+        }}</nb-option>
+      </nb-select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <label for="StartDate">Start Date</label>
+      <input
+        type="date"
+        name="StartDate"
+        nbInput
+        [(ngModel)]="timeclock.Start.Date"
+        #StartDate="ngModel"
+        [status]="
+          StartDate.invalid && (StartDate.dirty || StartDate.touched)
+            ? 'danger'
+            : 'primary'
+        "
+      />
+      <div *ngIf="StartDate.invalid && (StartDate.dirty || StartDate.touched)">
+        <div *ngIf="StartDate.errors?.required">
+          Start Date is required.
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <label for="StartTime">Start Time</label>
+      <input
+        type="time"
+        name="StartTime"
+        nbInput
+        [(ngModel)]="timeclock.Start.Time"
+        #StartTime="ngModel"
+        [status]="
+          StartTime.invalid && (StartTime.dirty || StartTime.touched)
+            ? 'danger'
+            : 'primary'
+        "
+      />
+      <div *ngIf="StartTime.invalid && (StartTime.dirty || StartTime.touched)">
+        <div *ngIf="StartTime.errors?.required">
+          Start Time is required.
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <label for="EndDate">End Date</label>
+      <input
+        type="date"
+        name="EndDate"
+        nbInput
+        [(ngModel)]="timeclock.End.Date"
+      />
+    </div>
+    <div class="column">
+      <label for="EndTime">End Time</label>
+      <input
+        type="time"
+        name="EndTime"
+        nbInput
+        [(ngModel)]="timeclock.End.Time"
+      />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+<app-bread-crumb-trail [crumbs]="crumbs"></app-bread-crumb-trail>
+
+<app-user-filter></app-user-filter>
+
+<app-user-card
+  class="user"
+  *ngFor="let user of users"
+  [user]="user"
+></app-user-card>

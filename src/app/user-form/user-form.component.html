@@ -1,0 +1,169 @@
+<nb-accordion>
+  <nb-accordion-item>
+    <nb-accordion-item-header>Credentials</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <form id="user-credentials-form" onsubmit="return false">
+        <div class="row">
+          <div class="column">
+            <label for="Username">Username</label>
+            <input
+              type="text"
+              name="Username"
+              nbInput
+              fullWidth
+              required
+              minlength="8"
+              [(ngModel)]="user.Credentials.Username"
+              #Username="ngModel"
+              [status]="
+                Username.invalid && (Username.dirty || Username.touched)
+                  ? 'danger'
+                  : 'primary'
+              "
+            />
+            <div
+              *ngIf="Username.invalid && (Username.dirty || Username.touched)"
+            >
+              <div *ngIf="Username.errors?.required">
+                Username is required.
+              </div>
+              <div *ngIf="Username.errors?.minlength">
+                Username must be at least 8 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="column" *ngIf="showPass">
+            <label for="Password">Password</label>
+            <input
+              type="password"
+              name="Password"
+              nbInput
+              fullWidth
+              required
+              minlength="8"
+              [(ngModel)]="user.Credentials.Password"
+              #Password="ngModel"
+              [status]="
+                Password.invalid && (Password.dirty || Password.touched)
+                  ? 'danger'
+                  : 'primary'
+              "
+            />
+            <div
+              *ngIf="Password.invalid && (Password.dirty || Password.touched)"
+            >
+              <div *ngIf="Password.errors?.required">
+                Password is required.
+              </div>
+              <div *ngIf="Password.errors?.minlength">
+                Password must be at least 8 characters long.
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>Name</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <form id="user-name-form" onsubmit="return false">
+        <div class="row">
+          <div class="column">
+            <label for="First">First</label>
+            <input
+              type="text"
+              name="First"
+              nbInput
+              fullWidth
+              required
+              [(ngModel)]="user.Name.First"
+              #First="ngModel"
+              [status]="
+                First.invalid && (First.dirty || First.touched)
+                  ? 'danger'
+                  : 'primary'
+              "
+            />
+            <div *ngIf="First.invalid && (First.dirty || First.touched)">
+              <div *ngIf="First.errors?.required">
+                First Name is required.
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <label for="Middle">Middle</label>
+            <input
+              type="text"
+              name="Middle"
+              nbInput
+              fullWidth
+              [(ngModel)]="user.Name.Middle"
+            />
+          </div>
+          <div class="column">
+            <label for="Last">Last</label>
+            <input
+              type="text"
+              name="Last"
+              nbInput
+              fullWidth
+              required
+              [(ngModel)]="user.Name.Last"
+              #Last="ngModel"
+              [status]="
+                Last.invalid && (Last.dirty || Last.touched)
+                  ? 'danger'
+                  : 'primary'
+              "
+            />
+            <div *ngIf="Last.invalid && (Last.dirty || Last.touched)">
+              <div *ngIf="Last.errors?.required">
+                Last Name is required.
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>Roles</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <nb-button-group multiple (valueChange)="rolesChanged($event)">
+        <button
+          *ngFor="let role of roleArray"
+          [pressed]="user.Roles.includes(role)"
+          nbButtonToggle
+          [value]="role"
+        >
+          {{ role }}
+        </button>
+      </nb-button-group>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>Emails</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <app-email-list
+        [emails]="user.Emails"
+        [addEmail]="addEmail"
+        [remEmail]="remEmail"
+      ></app-email-list>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>Phones</nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <app-phone-list
+        [phones]="user.Phones"
+        [addPhone]="addPhone"
+        [remPhone]="remPhone"
+      ></app-phone-list>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
