@@ -1,23 +1,24 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class RestService {
-  private readonly baseURL = "https://issue-tracker-api-jrossi.herokuapp.com/";
+  private readonly baseURL = "https://issue-tracker-api.jeff-rossi.com/";
+  // private readonly baseURL = 'http://localhost:4000/';
 
   constructor(private http: HttpClient) {}
 
   buildQueryString(obj: any) {
     return Object.keys(obj)
-      .map(k => escape(k) + "=" + escape(obj[k]))
-      .join("&");
+      .map((k) => escape(k) + '=' + escape(obj[k]))
+      .join('&');
   }
 
   async getData(path: string, params: any = {}) {
     if (Object.keys(params).length) {
-      path += "?" + this.buildQueryString(params);
+      path += '?' + this.buildQueryString(params);
     }
     return await this.http.get(this.baseURL + path).toPromise();
   }
